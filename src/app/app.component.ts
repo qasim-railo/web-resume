@@ -9,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web-resume';
+  email = "qasim.railo@gmail.com";
 }
