@@ -1,6 +1,14 @@
+# Qasim Ali – Web Resume
+
+This is my Angular-based resume website built with Bootstrap and hosted on GitHub Pages.
+
+[![View Live](https://img.shields.io/badge/View-Live-blue?style=for-the-badge&logo=github)](https://qasim-railo.github.io/web-resume/)
+
+
 # WebResume
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.13.
+
 
 ## Development server
 
