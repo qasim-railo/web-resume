@@ -33,3 +33,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## 🚀 Deployment
+
+To rebuild and deploy this Angular resume site to GitHub Pages:
+
+```bash
+ng build --configuration production --base-href=/web-resume/
+npx angular-cli-ghpages --dir=dist/web-resume/browser
+
