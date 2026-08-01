@@ -1,0 +1,170 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.birthday-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(circle at top, rgba(255, 197, 87, 0.28), transparent 25%),
+    linear-gradient(135deg, #1a1c4d 0%, #3b0f5a 35%, #6d1b7b 65%, #ff6fa1 100%);
+  overflow: hidden;
+}
+
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+.shape-one { top: 12%; left: 12%; animation-delay: 0s; }
+.shape-two { top: 20%; right: 14%; animation-delay: 1.5s; }
+.shape-three { bottom: 18%; left: 18%; animation-delay: 2.5s; }
+.shape-four { bottom: 14%; right: 12%; animation-delay: 1s; }
+
+.birthday-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 70px rgba(24, 10, 37, 0.45);
+  border-radius: 28px;
+  padding: 24px 20px 22px;
+  text-align: center;
+  animation: cardEntrance 1s ease-out;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd166, #ff9f1c);
+  color: #3d1b00;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 25px rgba(255, 158, 0, 0.35);
+}
+
+.photo-wrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 20px auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+  z-index: 1;
+}
+
+.photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+h1 {
+  margin: 8px 0 12px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  color: #fff7fb;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+h1 span {
+  color: #ffd166;
+}
+
+.message {
+  margin: 0 auto;
+  max-width: 30ch;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.sparkle-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 22px;
+  font-size: 1.7rem;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(12deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@media (max-width: 420px) {
+  .birthday-card {
+    padding: 22px 16px 18px;
+    border-radius: 24px;
+  }
+
+  .photo-wrap {
+    width: 150px;
+    height: 150px;
+  }
+
+  .message {
+    max-width: 26ch;
+    font-size: 0.95rem;
+  }
+}

@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'web-resume';
-  email = "qasim.railo@gmail.com";
+  personName = 'Aisha';
+  birthdayMessage =
+    'Happy Birthday! May your day be filled with laughter, love, sweet surprises, and beautiful memories. You deserve all the happiness in the world, today and always.';
 }

@@ -39,6 +39,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 To rebuild and deploy this Angular resume site to GitHub Pages:
 
 ```bash
+git add .
+git commit -m "Update resume UI1"
+git push origin main
 ng build --configuration production --base-href=/web-resume/
 npx angular-cli-ghpages --dir=dist/web-resume/browser
 
