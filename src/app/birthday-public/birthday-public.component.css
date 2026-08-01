@@ -1,22 +1,15 @@
 :host {
   display: block;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .birthday-page {
   position: relative;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: minmax(280px, 360px) minmax(280px, 420px);
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  padding: 32px 18px;
+  padding: 24px 16px;
   background:
     radial-gradient(circle at top, rgba(255, 197, 87, 0.28), transparent 25%),
     linear-gradient(135deg, #1a1c4d 0%, #3b0f5a 35%, #6d1b7b 65%, #ff6fa1 100%);
@@ -44,99 +37,22 @@
 .shape-three { bottom: 18%; left: 18%; animation-delay: 2.5s; }
 .shape-four { bottom: 14%; right: 12%; animation-delay: 1s; }
 
-.editor-panel,
+.lock-card,
 .birthday-card {
   position: relative;
   z-index: 1;
+  width: min(100%, 420px);
   background: rgba(255, 255, 255, 0.14);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(14px);
   box-shadow: 0 24px 70px rgba(24, 10, 37, 0.45);
   border-radius: 28px;
-}
-
-.editor-panel {
-  padding: 22px 18px;
-}
-
-.panel-header {
-  text-align: center;
-  margin-bottom: 18px;
-  color: #fff;
-}
-
-.panel-header h2 {
-  margin: 0 0 8px;
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-}
-
-.panel-header p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.birthday-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.birthday-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: #fff;
-  font-weight: 600;
-}
-
-.birthday-form input,
-.birthday-form textarea {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  padding: 12px 14px;
-  font-size: 0.98rem;
-  outline: none;
-}
-
-.birthday-form input::placeholder,
-.birthday-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.58);
-}
-
-.birthday-form input:focus,
-.birthday-form textarea:focus {
-  border-color: #ffd166;
-  box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.18);
-}
-
-.save-btn {
-  margin-top: 4px;
-  border: none;
-  border-radius: 14px;
-  padding: 12px 16px;
-  background: linear-gradient(135deg, #ffd166, #ff9f1c);
-  color: #2c1700;
-  font-weight: 800;
-  font-size: 0.98rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 20px rgba(255, 160, 0, 0.25);
-}
-
-.save-btn:hover {
-  transform: translateY(-1px);
-}
-
-.birthday-card {
-  width: min(100%, 420px);
   padding: 24px 20px 22px;
   text-align: center;
   animation: cardEntrance 1s ease-out;
 }
 
+.lock-badge,
 .badge {
   display: inline-block;
   padding: 8px 16px;
@@ -150,6 +66,53 @@
   box-shadow: 0 10px 25px rgba(255, 158, 0, 0.35);
 }
 
+.lock-card h2 {
+  margin: 18px 0 12px;
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+}
+
+.code-input-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.code-input-row input {
+  width: 100%;
+  max-width: 180px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 12px 14px;
+  letter-spacing: 0.55rem;
+  outline: none;
+}
+
+.code-input-row input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.unlock-btn {
+  margin-top: 18px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #ffd166, #ff9f1c);
+  color: #2f1900;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.error-message {
+  margin-top: 14px;
+  color: #ffd7d7;
+  font-weight: 600;
+}
+
 .photo-wrap {
   position: relative;
   width: 180px;
@@ -160,14 +123,6 @@
   border: 5px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
   animation: pulse 2.4s ease-in-out infinite;
-}
-
-.photo-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
-  z-index: 1;
 }
 
 .photo-wrap img {
@@ -233,25 +188,11 @@ h1 span {
   50% { transform: translateY(-6px); }
 }
 
-@media (max-width: 820px) {
-  .birthday-page {
-    grid-template-columns: 1fr;
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-  .editor-panel,
-  .birthday-card {
-    width: min(100%, 420px);
-    margin: 0 auto;
-  }
-}
-
 @media (max-width: 420px) {
-  .birthday-card,
-  .editor-panel {
-    padding: 20px 14px;
-    border-radius: 22px;
+  .lock-card,
+  .birthday-card {
+    padding: 22px 16px 18px;
+    border-radius: 24px;
   }
 
   .photo-wrap {

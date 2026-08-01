@@ -1,0 +1,84 @@
+<main class="admin-page">
+  <div class="floating-shapes" aria-hidden="true">
+    <span class="shape shape-one">🎉</span>
+    <span class="shape shape-two">✨</span>
+    <span class="shape shape-three">🎂</span>
+    <span class="shape shape-four">💖</span>
+  </div>
+
+  <section class="admin-shell">
+    <div class="admin-header">
+      <div>
+        <p class="eyebrow">Admin Panel</p>
+        <h1>Birthday Card Manager</h1>
+      </div>
+      <a routerLink="/" class="preview-link">Open Public Page</a>
+    </div>
+
+    <div class="admin-layout">
+      <section class="editor-card">
+        <form class="birthday-form" (ngSubmit)="onSubmit()">
+          <label>
+            Person Name
+            <input type="text" [(ngModel)]="personName" name="personName" placeholder="Enter name" />
+          </label>
+
+          <label>
+            Birthday Message
+            <textarea
+              rows="5"
+              [(ngModel)]="birthdayMessage"
+              name="birthdayMessage"
+              placeholder="Write a warm birthday wish"
+            ></textarea>
+          </label>
+
+          <label class="file-label">
+            Upload Photo
+            <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+            <span class="file-name">{{ imageName }}</span>
+          </label>
+
+          <label>
+            Visitor 4-Digit Code
+            <input
+              type="password"
+              [(ngModel)]="accessCode"
+              name="accessCode"
+              maxlength="4"
+              inputmode="numeric"
+              placeholder="Enter 4-digit code"
+            />
+          </label>
+
+          <button type="submit" class="save-btn">Save Birthday Card</button>
+        </form>
+
+        <div class="toast" [class.show]="showToast" aria-live="polite">
+          ✅ Birthday card saved successfully
+        </div>
+      </section>
+
+      <section class="preview-card" aria-live="polite">
+        <div class="badge">Happy Birthday</div>
+
+        <div class="photo-wrap">
+          <img [src]="imageData || 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80'" [alt]="personName + ' birthday photo'" />
+        </div>
+
+        <h2>Happy Birthday, <span>{{ personName || 'Guest' }}</span>!</h2>
+
+        <p class="message">
+          {{ birthdayMessage || 'Your birthday message will appear here.' }}
+        </p>
+
+        <div class="sparkle-row" aria-label="Birthday wishes">
+          <span>🎈</span>
+          <span>🎁</span>
+          <span>💫</span>
+          <span>🎊</span>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
