@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it('should expose the resume data', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('web-resume');
+    expect(app.title).toEqual('Qasim Ali | Power Platform Consultant');
     expect(app.email).toEqual('qasim.railo@gmail.com');
   });
 
@@ -26,5 +26,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Qasim Ali');
+    expect(compiled.querySelector('.role')?.textContent).toContain('Power Platform & Dynamics 365 Customer Engagement (CE) Consultant');
   });
 });

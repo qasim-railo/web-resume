@@ -1,118 +1,121 @@
-﻿<div class="container py-5">
-  <header class="text-center mb-4">
-    <div class="row">
-      <div class="col-9"></div>
-      <div class="col-3">
-        <div class="text-center my-4">
-          <a href="assets/Qasim-Ali-CV.pdf" download class="btn btn-primary">
-            <i class="fas fa-file-download me-2"></i> Download PDF Resume
-          </a>
+﻿<div class="resume-page">
+  <div class="resume-shell">
+    <header class="hero">
+      <div class="hero__identity">
+        <img [src]="profile.photo" [alt]="profile.name" class="hero__photo" />
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h1>{{ profile.name }}</h1>
+          <p class="role">{{ profile.role }}</p>
         </div>
       </div>
-    </div>
 
-    <img src="assets/Qasim-Ali-Photo.jpg" alt="Qasim Ali" class="rounded-circle shadow mb-3" width="120">
-    <h1 class="fw-bold">Qasim Ali</h1>
-    <p class="lead">Web Application Developer | Angular Developer</p>
-    <p>
-      <i class="fas fa-envelope"></i> <a href="mailto:qasim.railo@gmail.com">{{ email }}</a> |
-      <i class="fas fa-phone"></i> +974 7400 1784 |
-      <i class="fas fa-map-marker-alt"></i> Doha, Qatar
-    </p>
-    <p>
-      <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/qasimrailo" target="_blank"> LinkedIn </a> |
-      <i class="fab fa-github "></i> <a href="https://github.com/QasimRailo" target="_blank"> GitHub </a> |
-      <i class="fab fa-stack-overflow"></i> <a href="https://stackoverflow.com/users/12752433/qasim-ali" target="_blank"> Stack Overflow </a>
-    </p>
-  </header>
-
-  <section class="mb-4">
-    <h2 class="h4">Summary</h2>
-    <p>
-      Passionate and results-driven Angular Developer with 3+ years of experience in building scalable,
-      high-performance web applications using Angular, TypeScript, and RESTful APIs. Proficient in integrating backend
-      systems, optimizing UI/UX, and collaborating with cross-functional teams.
-    </p>
-  </section>
-
-  <section class="mb-4">
-    <h2 class="h4">Skills</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <strong>Frontend:</strong> Angular, TypeScript, JavaScript, HTML5, CSS3, Bootstrap
+      <div class="hero__actions">
+        <a class="btn btn-primary" href="assets/Qasim-Ali.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="btn btn-secondary" href="mailto:{{ email }}">Contact Me</a>
       </div>
-      <div class="col-md-4">
-        <strong>Backend:</strong> ASP.NET Core, RESTful APIs
-      </div>
-      <div class="col-md-4">
-        <strong>Database:</strong> SQL Server, MySQL
-      </div>
-      <div class="col-md-12 mt-2">
-        <strong>Tools:</strong> WordPress, Git, VS Code, SQL Server Management Studio, Firebase, Postman, Jira, Figma,
-        Zeplin, Slack, Trello
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section class="mb-4">
-    <h2 class="h4">Work Experience</h2>
-
-    <div class="mb-3">
-      <h5>Angular Developer - Proptiv Pvt. Limited (02/2024 - 12/2024)</h5>
-      <p><a href="https://www.proptiv.com/" target="_blank">proptiv.com</a> | Islamabad, Pakistan</p>
-      <ul>
-        <li>Developed and maintained modules of a Property Management CRM using Angular 12+.</li>
-        <li>Integrated REST APIs and handled UI enhancements to improve user experience.</li>
-        <li>Built reusable components and collaborated across design and backend teams.</li>
-        <li>Led code refactoring initiatives that reduced technical debt and improved app scalability.</li>
-      </ul>
+    <div class="contact-bar">
+      <span><i class="fas fa-envelope"></i> <a href="mailto:{{ email }}">{{ email }}</a></span>
+      <span><i class="fas fa-phone"></i> {{ phone }}</span>
+      <span><i class="fas fa-map-marker-alt"></i> {{ location }}</span>
+      <span><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/qasimrailo" target="_blank" rel="noopener">LinkedIn</a></span>
+      <span><i class="fab fa-github"></i> <a href="https://github.com/QasimRailo" target="_blank" rel="noopener">GitHub</a></span>
+      <span><i class="fab fa-stack-overflow"></i> <a href="https://stackoverflow.com/users/12752433/qasim-ali" target="_blank" rel="noopener">Stack Overflow</a></span>
     </div>
 
-    <div class="mb-3">
-      <h5>Angular Developer - Infiniun Healthcare Pvt. Limited (05/2023 - 02/2024)</h5>
-      <p><a href="http://www.infiniun.com/" target="_blank">infiniun.com</a> | Islamabad, Pakistan</p>
-      <ul>
-        <li>Led front-end Angular development for CRM systems in the healthcare domain.</li>
-        <li>Improved performance and functionality via efficient state and form management.</li>
-        <li>Collaborated with QA and product teams to deliver stable and user-friendly features.</li>
-        <li>Implemented lazy loading and modular architecture to enhance app speed and maintainability.</li>
-      </ul>
+    <div class="content-grid">
+      <main class="main-column">
+        <section class="card">
+          <div class="section-heading">
+            <span class="section-mark"></span>
+            <h2>Summary</h2>
+          </div>
+          <p class="summary-text">{{ summary }}</p>
+        </section>
+
+        <section class="card">
+          <div class="section-heading">
+            <span class="section-mark"></span>
+            <h2>Experience</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item" *ngFor="let item of experience">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="job-header">
+                  <div>
+                    <h3>{{ item.role }}</h3>
+                    <p class="company-line">
+                      <strong>{{ item.company }}</strong> • {{ item.location }}
+                    </p>
+                  </div>
+                  <span class="job-period">{{ item.period }}</span>
+                </div>
+
+                <p class="website-link">
+                  <a [href]="item.website" target="_blank" rel="noopener">{{ item.website.replace('https://', '').replace('http://', '') }}</a>
+                </p>
+
+                <ul>
+                  <li *ngFor="let point of item.points">{{ point }}</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <aside class="side-column">
+        <section class="card">
+          <div class="section-heading">
+            <span class="section-mark"></span>
+            <h2>Skills</h2>
+          </div>
+
+          <div class="skill-group" *ngFor="let group of skillGroups">
+            <h3>{{ group.title }}</h3>
+            <div class="tag-list">
+              <a *ngFor="let item of group.items" class="skill-pill" [href]="item.url" target="_blank" rel="noopener" [attr.aria-label]="'Open ' + item.name + ' website'">
+                <img [src]="item.icon" [alt]="item.name + ' logo'" />
+                <span>{{ item.name }}</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-heading">
+            <span class="section-mark"></span>
+            <h2>Education</h2>
+          </div>
+          <ul class="stack-list">
+            <li *ngFor="let item of education">{{ item }}</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="section-heading">
+            <span class="section-mark"></span>
+            <h2>Certificates</h2>
+          </div>
+          <ul class="stack-list">
+            <li *ngFor="let item of certifications">{{ item }}</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="section-heading">
+            <span class="section-mark"></span>
+            <h2>Languages</h2>
+          </div>
+          <ul class="stack-list">
+            <li *ngFor="let item of languages">{{ item }}</li>
+          </ul>
+        </section>
+      </aside>
     </div>
-
-    <div class="mb-3">
-      <h5>Web Application Developer - Mechplan Pvt. Limited (01/2022 - 04/2023)</h5>
-      <p><a href="https://mechplan.com/" target="_blank">mechplan.com</a> | Islamabad, Pakistan</p>
-      <ul>
-        <li>Developed full-stack web applications using Angular and ASP.NET Core.</li>
-        <li>Managed SQL-based data storage systems for efficient backend operations.</li>
-        <li>Delivered modular and maintainable code in fast-paced Agile sprints.</li>
-        <li>Built a custom role-based access control (RBAC) system integrated with the admin dashboard.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="mb-4">
-    <h2 class="h4">Education</h2>
-    <ul>
-      <li><strong>Master of Computer Science</strong> - COMSATS University Islamabad (2017 - 2019)</li>
-      <li><strong>ADP in IT Management</strong> - University of Central Punjab (2015 - 2017)</li>
-    </ul>
-  </section>
-
-  <section class="mb-4">
-    <h2 class="h4">Certificates</h2>
-    <ul>
-      <li>JavaScript Algorithms and Data Structures - freeCodeCamp (2023)</li>
-      <li>WordPress Development - DigiSkills (2019) | ID: TYSNZUZPQ</li>
-      <li>E-Rozgaar Technical Skills Training - COMSATS (2019)</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 class="h4">Languages</h2>
-    <ul>
-      <li>English - Professional Working Proficiency</li>
-      <li>Urdu - Native or Bilingual Proficiency</li>
-    </ul>
-  </section>
+  </div>
 </div>
