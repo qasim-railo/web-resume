@@ -14,16 +14,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'web-resume' title`, () => {
+  it('should expose the resume data', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('web-resume');
+    expect(app.email).toEqual('qasim.railo@gmail.com');
   });
 
-  it('should render title', () => {
+  it('should render the resume header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, web-resume');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Qasim Ali');
   });
 });
